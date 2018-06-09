@@ -6,8 +6,4 @@ router.get('/', function (req, res, next) {
     res.render('index', {title: 'Express'});
 });
 
-router.get('/wishlist', function (req, res, next) {
-    res.render('wishlist', {user: 'Bastian'});
-});
-
 module.exports = router;

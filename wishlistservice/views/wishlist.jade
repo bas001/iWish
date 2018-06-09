@@ -2,8 +2,10 @@ extends layout
 
 block content
     p Wishlist of #{user}
-    ul#peter
-    li
-        a(href="#book-a") Book A
-    li
-        a(href="#book-b") Book B
+    for item in wishes
+        p #{item.description}
+    form(action="#{formAction}", method='post')
+        div(data-role='fieldcontain')
+            fieldset(data-role='controlgroup')
+                input(id='description', value='', placeholder='What me wanth?', name='description')
+                input(type='submit', value='add', data-transition='fade', data-theme='c')

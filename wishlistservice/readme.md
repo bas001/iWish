@@ -1,0 +1,1 @@
+Start mongodb with: sudo service mongodb start

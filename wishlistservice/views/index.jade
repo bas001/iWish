@@ -3,4 +3,8 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  a(href="wishlist") wishes
+
+  p Select an event
+  for event in events
+    p #{event.name}
+  a(href="wishlist/1") wishes

@@ -5,8 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
+var wishlistRouter = require('./routes/wishlist');
 var usersRouter = require('./routes/db');
+var loginRouter = require('./routes/login');
 var expressMongoDb = require('express-mongo-db');
+var session = require('express-session')
+
 var app = express();
 
 
@@ -19,10 +23,25 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({ secret: 'example' }));
+
+app.use('/login', loginRouter);
+
+app.use(function(req, res, next) {
+    if (!req.session.user) {
+        res.redirect('/login')
+    } else {
+        next();
+    }
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(expressMongoDb('mongodb://localhost/test'));
+
+app.use(expressMongoDb("mongodb://localhost:27017/test"));
+//app.use(expressMongoDb(process.env.MONGODB_URI));
 
 app.use('/', indexRouter);
+app.use('/wishlist', wishlistRouter);
 app.use('/db', usersRouter);
 
 // catch 404 and forward to error handler
