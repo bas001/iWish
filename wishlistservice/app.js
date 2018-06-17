@@ -9,7 +9,7 @@ var wishlistRouter = require('./routes/wishlist');
 var usersRouter = require('./routes/db');
 var loginRouter = require('./routes/login');
 var expressMongoDb = require('express-mongo-db');
-var session = require('express-session')
+var session = require('express-session');
 
 var app = express();
 

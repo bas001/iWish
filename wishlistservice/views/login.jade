@@ -1,8 +1,10 @@
-div
-    form(action='/login', method='post')
-        div(data-role='fieldcontain')
+extends layout
+
+block content
+    form(class='mui-form', action='/login', method='post')
+        div(class="mui-col-md-4", data-role='fieldcontain')
             fieldset(data-role='controlgroup')
                 label(for='email') email
-                    input(id='email', value='', placeholder='your@mail.com', name='email')
-        div(data-role='fieldcontain')
-            input(type='submit', value='Sign Up', data-transition='fade', data-theme='c')
+                    input(class='mui-input', id='email', value='', placeholder='your@mail.com', name='email')
+        div(class="mui-col-md-4", data-role='fieldcontain')
+            input(class='mui-btn', type='submit', value='Sign Up', data-transition='fade', data-theme='c')

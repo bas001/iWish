@@ -4,8 +4,9 @@ block content
     p Wishlist of #{user}
     for item in wishes
         p #{item.description}
-    form(action="#{formAction}", method='post')
-        div(data-role='fieldcontain')
-            fieldset(data-role='controlgroup')
-                input(id='description', value='', placeholder='What me wanth?', name='description')
-                input(type='submit', value='add', data-transition='fade', data-theme='c')
+    form(class='mui-from', action="#{formAction}", method='post')
+        div(class='mui-row')
+            div(class="mui-col-md-2", data-role='fieldcontain')
+                input(class='mui-input', id='description', value='', placeholder='What me wanth?', name='description')
+            div(class="mui-col-md-2", data-role='fieldcontain')
+                input(class='mui-btn', type='submit', value='add', data-transition='fade', data-theme='c')

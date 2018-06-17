@@ -2,6 +2,15 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='//cdn.muicss.com/mui-0.9.39/css/mui.min.css', type='text/css')
+    style.
+      body {
+        background-color: lavender;
+      }
+      .mui-appbar {
+        background-color: lightblue;
+      }
   body
+  div(class='mui-appbar')
+  div(class='mui-container-fluid')
     block content
