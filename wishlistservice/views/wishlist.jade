@@ -1,9 +1,19 @@
 extends layout
 
 block content
-    p Wishlist of #{user}
+    link(href='/stylesheets/bla.css', rel='stylesheet')
+    script(src="/javascripts/wishlistFunc.js")
+
+    h2 Wishlist of #{user}
     for item in wishes
-        p #{item.description}
+        div(class='mui-row')
+            button(class='mui-btn', onclick="unfold('#{item.uuid}')") #{item.description}
+            div(class='toggle', data-visible='false', id="#{item.uuid}")
+                if item.comments
+                    for comment in item.comments
+                        p #{comment}
+                input(class='mui-input', value='', placeholder='add comment', name='comment')
+                input(class='mui-btn', type='submit', value='add', data-transition='fade', data-theme='c')
     form(class='mui-from', action="#{formAction}", method='post')
         div(class='mui-row')
             div(class="mui-col-md-2", data-role='fieldcontain')

@@ -1,4 +1,5 @@
 var express = require('express');
+var uuidv1 = require('uuid/v1');
 var router = express.Router();
 
 router.get('/:id', function (req, res, next) {
@@ -17,7 +18,7 @@ router.post('/:id/item', function (req, res, next) {
 
     req.db.collection("wishlist").update(
         {"_id": Number(req.params.id)},
-        {$push: {"items": {"description": req.body.description}}},
+        {$push: {"items": {"description": req.body.description, "uuid": uuidv1()}}},
         function (err, res) {
             if (err) throw err;
             console.log("1 document inserted");
