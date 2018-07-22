@@ -1,0 +1,12 @@
+extends layout
+
+block content
+
+    h2 Wishlist of #{user}
+    p Your wishlist is empty. Try to add your first wish.
+    form(class='mui-form', action="#{formAction}", method='post')
+        div(class='mui-row')
+            div(class="mui-col-md-2", data-role='fieldcontain')
+                input(class='mui-input', id='description', value='', placeholder='What me wanth?', name='description')
+            div(class="mui-col-md-2", data-role='fieldcontain')
+                input(class='mui-btn', type='submit', value='add', data-transition='fade', data-theme='c')

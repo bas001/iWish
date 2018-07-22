@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var wishlistRouter = require('./routes/wishlist');
+var wishRouter = require('./routes/wish');
 var usersRouter = require('./routes/db');
 var loginRouter = require('./routes/login');
 var expressMongoDb = require('express-mongo-db');
@@ -44,6 +45,7 @@ app.use(expressMongoDb("mongodb://localhost:27017/test"));
 
 app.use('/', indexRouter);
 app.use('/wishlist', wishlistRouter);
+app.use('/wishlist', wishRouter);
 app.use('/db', usersRouter);
 
 // catch 404 and forward to error handler

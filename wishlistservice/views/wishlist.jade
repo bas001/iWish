@@ -9,12 +9,11 @@ block content
         div(class='mui-row')
             button(class='mui-btn', onclick="unfold('#{item.uuid}')") #{item.description}
             div(class='toggle', data-visible='false', id="#{item.uuid}")
-                if item.comments
-                    for comment in item.comments
-                        p #{comment}
+                for comment in item.comments
+                    p #{comment.content}
                 input(class='mui-input', value='', placeholder='add comment', name='comment')
-                input(class='mui-btn', type='submit', value='add', data-transition='fade', data-theme='c')
-    form(class='mui-from', action="#{formAction}", method='post')
+                button(class='mui-btn', onclick="post('#{item.uuid}')") enter
+    form(class='mui-form', action="#{formAction}", method='post')
         div(class='mui-row')
             div(class="mui-col-md-2", data-role='fieldcontain')
                 input(class='mui-input', id='description', value='', placeholder='What me wanth?', name='description')
