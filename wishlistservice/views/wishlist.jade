@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    link(href='/stylesheets/bla.css', rel='stylesheet')
+    link(href='/stylesheets/toggle.css', rel='stylesheet')
     script(src="/javascripts/wishlistFunc.js")
 
     h2 Wishlist of #{user}
@@ -12,10 +12,4 @@ block content
                 for comment in item.comments
                     p #{comment.content}
                 input(class='mui-input', value='', placeholder='add comment', name='comment')
-                button(class='mui-btn', onclick="post('#{item.uuid}')") enter
-    form(class='mui-form', action="#{formAction}", method='post')
-        div(class='mui-row')
-            div(class="mui-col-md-2", data-role='fieldcontain')
-                input(class='mui-input', id='description', value='', placeholder='What me wanth?', name='description')
-            div(class="mui-col-md-2", data-role='fieldcontain')
-                input(class='mui-btn', type='submit', value='add', data-transition='fade', data-theme='c')
+                button(class='mui-btn', onclick="postComment('#{item.uuid}')") enter

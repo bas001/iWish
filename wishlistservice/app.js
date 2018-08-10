@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
+var dashboardRouter = require('./routes/dashboard');
 var wishlistRouter = require('./routes/wishlist');
 var wishRouter = require('./routes/wish');
 var usersRouter = require('./routes/db');
@@ -45,6 +46,7 @@ app.use(expressMongoDb("mongodb://localhost:27017/test"));
 
 app.use('/', indexRouter);
 app.use('/wishlist', wishlistRouter);
+app.use('/dashboard', dashboardRouter);
 app.use('/wishlist', wishRouter);
 app.use('/db', usersRouter);
 

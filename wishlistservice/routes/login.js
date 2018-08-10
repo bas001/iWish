@@ -6,8 +6,8 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-    req.session.user = req.body.email;
-    res.redirect('/wishlist/1');
+    req.session.user = req.body.username;
+    res.redirect('/dashboard');
 
 });
 module.exports = router;

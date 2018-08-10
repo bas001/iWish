@@ -1,0 +1,10 @@
+extends layout
+
+
+block content
+    script(src="/javascripts/wishlistFunc.js")
+
+    h1 Hello #{user}
+    for wishlist in allWishlists
+        button(class='mui-btn', onclick="getWishlist('#{wishlist}')") open #{wishlist}
+    button(class='mui-btn', onclick="post('#{user}')") create wishlist
