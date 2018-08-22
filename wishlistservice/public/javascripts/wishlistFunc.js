@@ -5,21 +5,14 @@ function post(user) {
         .catch(error => console.error(error));
 }
 
-function getWishlist(_id) {
-    getData('/wishlist/' +_id)
-        .then(data => console.log(data))
-        .catch(error => console.error(error));
-}
-
-
 //wishlist
 
 function unfold(uuid) {
     if (uuid === "undefined") {
         return;
     }
-    var toggles = document.getElementsByClassName('toggle');
-    var state = document.getElementById(uuid).getAttribute('data-visible');
+    let toggles = document.getElementsByClassName('toggle');
+    let state = document.getElementById(uuid).getAttribute('data-visible');
     [].forEach.call(toggles, function (el) {
         el.setAttribute('data-visible', "false")
     });
@@ -29,33 +22,28 @@ function unfold(uuid) {
 }
 
 function removeWish(uuid) {
-    updateData('/wishlist/1/item/', {uuid: uuid})
+    deleteData('/wishlist/1/item/' + uuid)
         .then(data => console.log(data))
         .catch(error => console.error(error));
 }
 
-
 function postComment(uuid) {
-
-    var comment = document.getElementById(uuid).getElementsByTagName("input")[0].value;
+    let comment = document.getElementById(uuid).getElementsByTagName("input")[0].value;
     postData('/wishlist/1/item/comment', {uuid: uuid, comment: comment})
         .then(data => console.log(data)) // JSON from `response.json()` call
         .catch(error => console.error(error));
-
 }
 
-const getData = (url = ``) => {
-    // Default options are marked with *
+const deleteData = (url = ``) => {
     return fetch(url, {
-        method: "GET", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, cors, *same-origin
-        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: "same-origin", // include, same-origin, *omit
-        redirect: "follow", // manual, *follow, error
+        method: "DELETE",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        redirect: "follow",
         referrer: "no-referrer"
     })
-        .then(response => response.text()) // parses response to JSON
-        .then(data => document.write(data)) // parses response to JSON
+        .then(response => window.location.reload()) // parses response to JSON
         .catch(error => console.error(`Fetch Error =\n`, error));
 };
 

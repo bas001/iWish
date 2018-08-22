@@ -2,7 +2,7 @@ Start mongodb ```sudo service mongodb start```
 
 mongo shell ```mongo```
 
-switch db ```db test```
+switch db ```use test```
 
-find wishlists ```db.wishlists.find()```
+find wishlists ```db.wishlist.find()```
 

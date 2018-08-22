@@ -1,14 +1,16 @@
 extends layout
 
 block content
-    link(href='/stylesheets/toggle.css', rel='stylesheet')
     script(src="/javascripts/wishlistFunc.js")
 
     h2 My wishlist
     for item in wishes
         div(class='mui-row')
-            p #{item.description}
-            button(class='mui-btn', onclick="delete('#{item.uuid}')") delete
+            div(class='mui-col-md-4')
+                p #{item.description}
+            div(class='mui-col-md-4')
+                button(class='mui-btn', onclick="removeWish('#{item.uuid}')") remove
+
     form(class='mui-form', action="#{formAction}", method='post')
         div(class='mui-row')
             div(class="mui-col-md-2", data-role='fieldcontain')

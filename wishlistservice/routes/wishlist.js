@@ -1,5 +1,4 @@
 var express = require('express');
-var uuidv1 = require('uuid/v1');
 var ObjectId = require('mongodb').ObjectID;
 var router = express.Router();
 
@@ -36,17 +35,6 @@ router.post('/', function (req, res, next) {
     res.redirect('/dashboard/');
 });
 
-router.post('/:id/item', function (req, res, next) {
-
-    req.db.collection("wishlist").update(
-        {"_id": ObjectId(req.params.id)},
-        {$push: {"items": {"description": req.body.description, "uuid": uuidv1(), "comments": []}}},
-        function (err, res) {
-            if (err) throw err;
-            console.log("1 item inserted in wishlist");
-        });
-    res.redirect('/wishlist/' + req.params.id);
-});
 
 module.exports = router;
 
