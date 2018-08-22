@@ -1,11 +1,17 @@
 extends layout
 
-
 block content
     script(src="/javascripts/wishlistFunc.js")
 
     h1 Hello #{user}
-    for wishlist in allWishlists
-        a(href='wishlist/#{wishlist}', class='mui-btn') open #{wishlist}
-    div
-        button(class='mui-btn', onclick="post('#{user}')") + create wishlist
+    h2 Upcoming events (wishlists atm)
+        for wishlist in allWishlists
+            div
+                if wishlist.user === user
+                    a(href='wishlist/#{wishlist._id}', class='mui-btn') open my wishlist
+                else
+                    a(href='wishlist/#{wishlist._id}', class='mui-btn') open wishlist of #{wishlist.user}
+
+
+        div
+            button(class='mui-btn', onclick="post('#{user}')") + create wishlist

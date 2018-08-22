@@ -5,15 +5,11 @@ block content
 
     h2 My wishlist
     for item in wishes
-        div(class='mui-row')
-            div(class='mui-col-md-4')
-                p #{item.description}
-            div(class='mui-col-md-4')
-                button(class='mui-btn', onclick="removeWish('#{item.uuid}')") remove
+        div
+            h3(class='inline') #{item.description}
+            button(class='mui-btn', onclick="removeWish('#{wishlistId}', '#{item.uuid}')") remove
 
-    form(class='mui-form', action="#{formAction}", method='post')
-        div(class='mui-row')
-            div(class="mui-col-md-2", data-role='fieldcontain')
-                input(class='mui-input', id='description', value='', placeholder='What me wanth?', name='description')
-            div(class="mui-col-md-2", data-role='fieldcontain')
-                input(class='mui-btn', type='submit', value='add', data-transition='fade', data-theme='c')
+    form(class='mui-form', action="/wishlist/#{wishlistId}/item", method='post')
+        div
+            input(class='mui-input', id='description', value='', placeholder='What me wanth?', name='description')
+            input(class='mui-btn', type='submit', value='add', data-transition='fade', data-theme='c')

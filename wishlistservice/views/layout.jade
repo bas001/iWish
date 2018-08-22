@@ -10,7 +10,17 @@ html
       .mui-appbar {
         background-color: lightblue;
       }
+      .mui-input {
+        margin: 0 10px;
+        display: inline-block;
+      }
+      .inline {
+        margin: 0 10px;
+        display: inline-block;
+      }
   body
   div(class='mui-appbar')
+    a(href='/dashboard', class="mui--pull-left") Dashboard
+    a(href='/login', class="mui--pull-right") Logout
   div(class='mui-container-fluid')
     block content

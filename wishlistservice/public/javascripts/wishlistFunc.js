@@ -21,8 +21,8 @@ function unfold(uuid) {
     }
 }
 
-function removeWish(uuid) {
-    deleteData('/wishlist/1/item/' + uuid)
+function removeWish(wishlistId, uuid) {
+    deleteData('/wishlist/' + wishlistId + '/item/' + uuid)
         .then(data => console.log(data))
         .catch(error => console.error(error));
 }

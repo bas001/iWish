@@ -10,6 +10,6 @@ block content
             button(class='mui-btn', onclick="unfold('#{item.uuid}')") #{item.description}
             div(class='toggle', data-visible='false', id="#{item.uuid}")
                 for comment in item.comments
-                    p #{comment.content}
+                    p #{comment.user}: #{comment.content}
                 input(class='mui-input', value='', placeholder='add comment', name='comment')
                 button(class='mui-btn', onclick="postComment('#{item.uuid}')") enter

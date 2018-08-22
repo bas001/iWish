@@ -4,7 +4,7 @@ block content
 
     h2 My Wishlist
     p Your wishlist is empty. Start off by adding your first wish.
-    form(class='mui-form', action="#{formAction}", method='post')
+    form(class='mui-form', action="/wishlist/#{wishlistId}/item", method='post')
         div(class='mui-row')
             div(class="mui-col-md-2", data-role='fieldcontain')
                 input(class='mui-input', id='description', value='', placeholder='What me wanth?', name='description')

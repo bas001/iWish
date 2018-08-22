@@ -3,21 +3,25 @@ var ObjectId = require('mongodb').ObjectID;
 var router = express.Router();
 
 router.get('/:id', function (req, res, next) {
-    req.db.collection("wishlist").findOne({"_id": ObjectId(req.params.id)}, function (err, result) {
+    req.db.collection("wishlist").findOne({"_id": ObjectId(req.params.id)}, function (err, wishlist) {
         if (err) throw err;
 
-        console.log(ObjectId(req.params.id));
-        // In Jade File I have no id of wishlist, so I have to pass formAction :/
-        if (result.items && result.items.length > 0) {
+        if (wishlist.user !== req.session.user) {
+            res.render('wishlist', {
+                user: req.session.user,
+                wishes: wishlist.items
+            });
+        }
+        else if (wishlist.items && wishlist.items.length > 0) {
             res.render('myWishlist', {
                 user: req.session.user,
-                wishes: result.items,
-                formAction: '/wishlist/' + req.params.id + '/item'
+                wishes: wishlist.items,
+                wishlistId: req.params.id
             });
         } else {
             res.render('emptyWishlist', {
                 user: req.session.user,
-                formAction: '/wishlist/' + req.params.id + '/item'
+                wishlistId: req.params.id
             });
         }
 
