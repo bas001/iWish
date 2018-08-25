@@ -9,7 +9,7 @@ router.get('/:id', function (req, res, next) {
         if (wishlist.user !== req.session.user) {
             res.render('wishlist', {
                 user: req.session.user,
-                wishes: wishlist.items
+                wishlist: wishlist
             });
         }
         else if (wishlist.items && wishlist.items.length > 0) {

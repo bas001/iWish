@@ -4,8 +4,8 @@ block content
     link(href='/stylesheets/toggle.css', rel='stylesheet')
     script(src="/javascripts/wishlistFunc.js")
 
-    h2 Wishlist of #{user}
-    for item in wishes
+    h2 Wishlist of #{wishlist.user}
+    for item in wishlist.items
         div(class='mui-row')
             button(class='mui-btn', onclick="unfold('#{item.uuid}')") #{item.description}
             div(class='toggle', data-visible='false', id="#{item.uuid}")
