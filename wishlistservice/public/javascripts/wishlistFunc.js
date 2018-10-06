@@ -5,8 +5,6 @@ function post(user) {
         .catch(error => console.error(error));
 }
 
-//wishlist
-
 function unfold(uuid) {
     if (uuid === "undefined") {
         return;

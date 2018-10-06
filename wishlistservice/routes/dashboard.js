@@ -6,7 +6,6 @@ router.get('/', function (req, res, next) {
     req.db.collection('wishlist')
         .find()
         .toArray(function (err, result) {
-            console.log(result);
             res.render('dashboard', {
                 user: req.session.user,
                 allWishlists: !result ? [] : result
