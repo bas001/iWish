@@ -4,14 +4,16 @@ block content
     script(src="/javascripts/wishlistFunc.js")
 
     h1 Hello #{user}
-    h2 Upcoming events (wishlists atm)
-        for wishlist in allWishlists
+    h2 yours
+        for wishlist in yourWishlists
             div
-                if wishlist.user === user
-                    a(href='wishlist/#{wishlist._id}', class='mui-btn') open my wishlist
-                else
-                    a(href='wishlist/#{wishlist._id}', class='mui-btn') open wishlist of #{wishlist.user}
-
-
+                a(href='wishlist/#{wishlist._id}', class='mui-btn') open my wishlist
         div
-            button(class='mui-btn', onclick="post('#{user}')") + create wishlist
+           button(class='mui-btn', onclick="post('#{user}')") + create wishlist
+    h2 others
+        for wishlist in otherWishlists
+            div
+                a(href='wishlist/#{wishlist._id}', class='mui-btn') open wishlist of #{wishlist.user}
+
+
+
