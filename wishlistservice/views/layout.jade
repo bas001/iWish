@@ -28,14 +28,9 @@ html
       }
   body
   div(class='mui-appbar')
-    table(width="100%")
-      tr(style="vertical-align:middle;")
-        td(class="mui--appbar-height")
-          a(href='/dashboard') Dashboard
-        td(class="mui--appbar-height" align="center")
-          h1 iWish
-        td(class="mui--appbar-height" align="right")
-          a(href='/login') Logout
-  script(src="/javascripts/linkify.js")
+      a(href='/dashboard') Dashboard
+      a(href='/login', class='mui--pull-right') Logout
+      h1(class='mui--text-center') iWish
+      script(src="/javascripts/linkify.js")
   div(class='mui-container-fluid')
     block content
