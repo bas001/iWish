@@ -5,6 +5,11 @@ function post(user) {
         .catch(error => console.error(error));
 }
 
+window.onload = function() {
+    let openItem = getCookie("open-item")
+    unfold(openItem)
+};
+
 function unfold(uuid) {
     if (uuid === "undefined") {
         return;
@@ -17,6 +22,8 @@ function unfold(uuid) {
     if (state === "false") {
         document.getElementById(uuid).setAttribute('data-visible', "true");
     }
+
+    setCookie("open-item",uuid,3)
 }
 
 function removeWish(wishlistId, uuid) {
