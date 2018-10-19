@@ -41,8 +41,8 @@ app.use(function(req, res, next) {
 });
 
 
-app.use(expressMongoDb("mongodb://localhost:27017/test"));
-//app.use(expressMongoDb(process.env.MONGODB_URI));
+//app.use(expressMongoDb("mongodb://localhost:27017/test"));
+app.use(expressMongoDb(process.env.MONGODB_URI));
 
 app.use('/', indexRouter);
 app.use('/wishlist', wishlistRouter);
