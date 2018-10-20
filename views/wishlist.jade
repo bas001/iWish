@@ -5,11 +5,14 @@ block content
     script(src="/javascripts/wishlistFunc.js")
 
     h2 Wishlist of #{wishlist.user}
-    for item in wishlist.items
-        div
-            p(class='almost-button', onclick="unfold('#{item.uuid}')") #{item.description}
-            div(class='toggle', data-visible='false', id="#{item.uuid}")
-                for comment in item.comments
-                    p #{comment.user}: #{comment.content}
-                input(class='mui-input', value='', placeholder='add comment', name='comment')
-                button(class='mui-btn', onclick="postComment('#{item.uuid}')") enter
+    if wishlist.items.length === 0
+        p This one is empty :)
+    else
+        for item in wishlist.items
+            div
+                p(class='almost-button', onclick="unfold('#{item.uuid}')") #{item.description}
+                div(class='toggle', data-visible='false', id="#{item.uuid}")
+                    for comment in item.comments
+                        p #{comment.user}: #{comment.content}
+                    input(class='mui-input', value='', placeholder='add comment', name='comment')
+                    button(class='mui-btn', onclick="postComment('#{item.uuid}')") enter
