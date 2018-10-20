@@ -5,9 +5,13 @@ function post(user) {
         .catch(error => console.error(error));
 }
 
-window.onload = function() {
-    let openItem = getCookie("open-item")
-    unfold(openItem)
+// wishlist
+window.onload = function () {
+    let openItem = getCookie("open-item");
+    unfold(openItem);
+
+    let html = document.documentElement.innerHTML;
+    document.write(linkify(html));
 };
 
 function unfold(uuid) {
@@ -15,19 +19,21 @@ function unfold(uuid) {
         return;
     }
     let toggles = document.getElementsByClassName('toggle');
-    let state = document.getElementById(uuid).getAttribute('data-visible');
+    let visible = document.getElementById(uuid).getAttribute('data-visible');
     [].forEach.call(toggles, function (el) {
         el.setAttribute('data-visible', "false")
     });
-    if (state === "false") {
+    if (visible === "false") {
         document.getElementById(uuid).setAttribute('data-visible', "true");
+        setCookie("open-item", uuid)
+    } else {
+        setCookie("open-item", "undefined")
     }
 
-    setCookie("open-item",uuid,3)
 }
 
 function removeWish(wishlistId, uuid) {
-    deleteData('/wishlist/' + wishlistId + '/item/' + uuid)
+    deleteItem('/wishlist/' + wishlistId + '/item/' + uuid)
         .then(data => console.log(data))
         .catch(error => console.error(error));
 }
@@ -39,7 +45,7 @@ function postComment(uuid) {
         .catch(error => console.error(error));
 }
 
-const deleteData = (url = ``) => {
+function deleteItem (url = ``) {
     return fetch(url, {
         method: "DELETE",
         mode: "cors",
@@ -50,9 +56,9 @@ const deleteData = (url = ``) => {
     })
         .then(response => window.location.reload()) // parses response to JSON
         .catch(error => console.error(`Fetch Error =\n`, error));
-};
+}
 
-const postData = (url = ``, data = {}) => {
+function postData (url = ``, data = {}) {
     // Default options are marked with *
     return fetch(url, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -68,24 +74,4 @@ const postData = (url = ``, data = {}) => {
     })
         .then(response => window.location.reload()) // parses response to JSON
         .catch(error => console.error(`Fetch Error =\n`, error));
-};
-
-const updateData = (url = ``, data = {}) => {
-    // Default options are marked with *
-    return fetch(url, {
-        method: "PUT", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, cors, *same-origin
-        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: "same-origin", // include, same-origin, *omit
-        headers: {
-            "Content-Type": "application/json; charset=utf-8",
-        },
-        redirect: "follow", // manual, *follow, error
-        referrer: "no-referrer", // no-referrer, *client
-        body: JSON.stringify(data), // body data type must match "Content-Type" header
-    })
-        .then(response => window.location.reload()) // parses response to JSON
-        .catch(error => console.error(`Fetch Error =\n`, error));
-};
-
-
+}

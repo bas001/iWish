@@ -1,8 +1,3 @@
-window.onload = function() {
-    let html = document.documentElement.innerHTML;
-    document.write(linkify(html));
-};
-
 // https://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
 function linkify(inputText) {
     let replacedText, replacePattern1, replacePattern2, replacePattern3;
