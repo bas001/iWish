@@ -4,10 +4,10 @@ block content
     script(src="/javascripts/wishlistFunc.js")
 
     h1 Hello #{user}
-    h2 yours
-        if yourWishlist
+    h2 mine
+        if myWishlist
             div
-                a(href='wishlist/#{yourWishlist._id}', class='mui-btn') open my wishlist
+                a(href='wishlist/#{myWishlist._id}', class='mui-btn') open my wishlist
         else
             div
                 button(class='mui-btn', onclick="post('#{user}')") + create wishlist
