@@ -29,6 +29,12 @@ function unfold(uuid) {
 
 }
 
+function commentKeyupEvent(uuid) {
+    if (event.keyCode === 13) {
+        postComment(uuid)
+    }
+}
+
 function removeWish(wishlistId, uuid) {
     deleteItem('/wishlist/' + wishlistId + '/item/' + uuid)
         .then(data => console.log(data))
