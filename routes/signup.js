@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
-    req.session.user = "";
-    res.render('login');
+    res.render('signup');
 });
 
 router.post('/', function (req, res, next) {
@@ -11,16 +10,21 @@ router.post('/', function (req, res, next) {
     let password = req.body.password;
 
     req.db.collection("users").findOne({"name": username}, function (err, user) {
-        if (user && user.password === password) {
-            req.session.user = username;
-            res.redirect('/dashboard');
 
+        if(user) {
+            res.render('signup', {
+                error: 'User already exists.'
+            });
         } else {
-            res.render('login', {
-                error: "The username or password is incorrect."
-            })
+            req.db.collection("users").insert({"name": username, "password": password}, function (err, user) {
+                req.session.user = username;
+                res.redirect('/dashboard');
+
+            });
         }
+
     });
+
 
 
 });

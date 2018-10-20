@@ -9,6 +9,7 @@ var dashboardRouter = require('./routes/dashboard');
 var wishlistRouter = require('./routes/wishlist');
 var wishRouter = require('./routes/wish');
 var loginRouter = require('./routes/login');
+var signupRouter = require('./routes/signup');
 var expressMongoDb = require('express-mongo-db');
 var session = require('express-session');
 
@@ -29,7 +30,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(session({ secret: 'example' }));
 
+
+//app.use(expressMongoDb("mongodb://localhost:27017/test"));
+app.use(expressMongoDb(process.env.MONGODB_URI));
+
 app.use('/login', loginRouter);
+app.use('/signup', signupRouter);
 
 app.use(function(req, res, next) {
     if (!req.session.user) {
@@ -38,10 +44,6 @@ app.use(function(req, res, next) {
         next();
     }
 });
-
-
-//app.use(expressMongoDb("mongodb://localhost:27017/test"));
-app.use(expressMongoDb(process.env.MONGODB_URI));
 
 app.use('/', indexRouter);
 app.use('/wishlist', wishlistRouter);

@@ -36,6 +36,7 @@ router.post('/', function (req, res, next) {
             if (err) throw err;
             console.log("1 wishlist added");
         });
+    // todo put redirect inside with id
     res.redirect('/dashboard/');
 });
 
