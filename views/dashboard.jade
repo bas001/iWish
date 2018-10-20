@@ -1,8 +1,6 @@
 extends layout
 
 block content
-    script(src="/javascripts/dashboardFunc.js")
-
     h1 Hello #{user}
     h2 mine
         if myWishlist
@@ -10,7 +8,9 @@ block content
                 a(href='wishlist/#{myWishlist._id}', class='mui-btn') open my wishlist
         else
             div
-                button(class='mui-btn', onclick="post('#{user}')") + create wishlist
+                form(class='mui-form', action="/wishlist", method='post')
+                    input(type='hidden', id='user', name='user', value='#{user}')
+                    input(class='mui-btn', type='submit', value='+ create wishlist')
     h2 others
         for wishlist in otherWishlists
             div

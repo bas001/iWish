@@ -4,14 +4,13 @@ block content
     if error
         p #{error}
     form(class='mui-form', action='/login', method='post')
-            fieldset(data-role='controlgroup')
-                label username
-                input(class='mui-input', id='username', value='', placeholder='your username', name='username')
-                label password
-                input(class='mui-input', id='password', value='', placeholder='your password', name='password')
-            input(class='mui-btn', type='submit', value='Log In', data-transition='fade', data-theme='c')
+        fieldset(data-role='controlgroup')
+            label username
+            input(class='mui-input', id='username', value='', placeholder='your username', name='username')
+            label password
+            input(class='mui-input', id='password', value='', placeholder='your password', name='password')
+        input(class='mui-btn', type='submit', value='Log In', data-transition='fade', data-theme='c')
     div
         p
-        span no account?
-        span
+        span no account? !{' '}
         a(href='/signup') Sign Up

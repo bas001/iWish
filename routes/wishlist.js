@@ -6,6 +6,7 @@ router.get('/:id', function (req, res, next) {
     req.db.collection("wishlist").findOne({"_id": ObjectId(req.params.id)}, function (err, wishlist) {
         if (err) throw err;
 
+        console.log("found " + wishlist._id);
         if (wishlist.user !== req.session.user) {
             res.render('wishlist', {
                 user: req.session.user,
@@ -32,12 +33,12 @@ router.post('/', function (req, res, next) {
 
     req.db.collection("wishlist").insert(
         {"items": [], "user": req.body.user},
-        function (err, res) {
+        function (err, wishlist) {
             if (err) throw err;
-            console.log("1 wishlist added");
+            console.log("1 wishlist added" + wishlist.insertedIds[0]);
+            res.redirect('/wishlist/' + wishlist.insertedIds[0]);
+
         });
-    // todo put redirect inside with id
-    res.redirect('/dashboard/');
 });
 
 
