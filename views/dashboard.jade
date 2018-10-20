@@ -5,11 +5,12 @@ block content
 
     h1 Hello #{user}
     h2 yours
-        for wishlist in yourWishlists
+        if yourWishlist
             div
-                a(href='wishlist/#{wishlist._id}', class='mui-btn') open my wishlist
-        div
-           button(class='mui-btn', onclick="post('#{user}')") + create wishlist
+                a(href='wishlist/#{yourWishlist._id}', class='mui-btn') open my wishlist
+        else
+            div
+                button(class='mui-btn', onclick="post('#{user}')") + create wishlist
     h2 others
         for wishlist in otherWishlists
             div
