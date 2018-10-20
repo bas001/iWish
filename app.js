@@ -8,7 +8,6 @@ var indexRouter = require('./routes/index');
 var dashboardRouter = require('./routes/dashboard');
 var wishlistRouter = require('./routes/wishlist');
 var wishRouter = require('./routes/wish');
-var usersRouter = require('./routes/db');
 var loginRouter = require('./routes/login');
 var expressMongoDb = require('express-mongo-db');
 var session = require('express-session');
@@ -48,7 +47,6 @@ app.use('/', indexRouter);
 app.use('/wishlist', wishlistRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/wishlist', wishRouter);
-app.use('/db', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
