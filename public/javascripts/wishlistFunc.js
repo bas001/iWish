@@ -35,8 +35,18 @@ function commentKeyupEvent(uuid) {
     }
 }
 
+function showPubshlishPopup(wishlistId) {
+    // todo show popup and then publishWishlist
+}
+
+function publishWishlist(wishlistId) {
+    patchData('/wishlist/' + wishlistId, {published: true})
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+}
+
 function removeWish(wishlistId, uuid) {
-    deleteItem('/wishlist/' + wishlistId + '/item/' + uuid)
+    deleteData('/wishlist/' + wishlistId + '/item/' + uuid)
         .then(data => console.log(data))
         .catch(error => console.error(error));
 }

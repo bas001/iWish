@@ -1,7 +1,21 @@
 
-function deleteItem (url = ``) {
+function deleteData (url = ``) {
     return fetch(url, {
         method: "DELETE",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        redirect: "follow",
+        referrer: "no-referrer"
+    })
+        .then(response => window.location.reload()) // parses response to JSON
+        .catch(error => console.error(`Fetch Error =\n`, error));
+}
+
+
+function patchData (url = ``, data = {}) {
+    return fetch(url, {
+        method: "PATCH",
         mode: "cors",
         cache: "no-cache",
         credentials: "same-origin",

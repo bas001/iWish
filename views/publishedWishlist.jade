@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    script(src="/javascripts/wishlistFunc.js")
+
+    h2 My wishlist
+    h3 This wishlist is already published. You cannot edit it anymore. Enjoy your surprise :)
+    for item in wishes
+        div
+            h3(class='inline') - #{item.description}
