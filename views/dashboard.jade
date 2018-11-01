@@ -5,16 +5,16 @@ block content
     h2 mine
         if myWishlist
             div
-                a(href='wishlist/#{myWishlist._id}', class='mui-btn') open my wishlist
+                a(href='wishlist/#{myWishlist._id}', class='mui-btn mui-btn--large mui-btn--raised') open my wishlist
         else
             div
                 form(class='mui-form', action="/wishlist", method='post')
                     input(type='hidden', id='user', name='user', value='#{user}')
-                    input(class='mui-btn', type='submit', value='+ create wishlist')
+                    input(class='mui-btn mui-btn--large mui-btn--raised', type='submit', value='+ create wishlist')
     h2 others
         for wishlist in otherWishlists
             div
-                a(href='wishlist/#{wishlist._id}', class='mui-btn') open wishlist of #{wishlist.user}
+                a(href='wishlist/#{wishlist._id}', class='mui-btn mui-btn--large mui-btn--raised') open wishlist of #{wishlist.user}
 
 
 

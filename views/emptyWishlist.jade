@@ -6,7 +6,6 @@ block content
     p Your wishlist is empty. Start off by adding your first wish.
     form(class='mui-form', action="/wishlist/#{wishlistId}/item", method='post')
         div(class='mui-row')
-            div(class="mui-col-md-2", data-role='fieldcontain')
-                input(class='mui-input', id='description', value='', placeholder='What me wanth?', name='description')
-            div(class="mui-col-md-2", data-role='fieldcontain')
-                input(class='mui-btn', type='submit', value='add', data-transition='fade', data-theme='c')
+            div(data-role='fieldcontain')
+                input(class='mui-input', id='description', value='', placeholder='What me want?', name='description')
+                input(class='mui-btn mui-btn--large mui-btn--raised', type='submit', value='add', data-transition='fade', data-theme='c')

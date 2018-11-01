@@ -39,11 +39,12 @@ function showPubshlishModal(wishlistId) {
     // initialize modal element
     let modalEl = document.createElement('div');
     modalEl.style.width = '400px';
-    modalEl.style.height = '400px';
+    modalEl.style.height = '300px';
     modalEl.style.margin = '100px auto';
     modalEl.style.backgroundColor = '#fff';
     modalEl.style.textAlign = "center";
     modalEl.style.padding = "20px";
+    modalEl.style.position = "relative";
 
     let par1 = document.createElement("p");
     par1.style.fontSize = "30px";
@@ -52,7 +53,7 @@ function showPubshlishModal(wishlistId) {
     par2.style.fontSize = "30px";
     par2.innerHTML = "Once published a wishlist cannot be edited anymore.";
     let okButton = document.createElement("button");
-    okButton.className = "mui-btn mui-btn--primary";
+    okButton.className = "mui-btn mui-btn--primary mui-btn--large";
     okButton.innerHTML = "ok";
     okButton.name = "okButton";
     okButton.onclick = function () {
@@ -61,17 +62,23 @@ function showPubshlishModal(wishlistId) {
     };
 
     let cancelButton = document.createElement("button");
-    cancelButton.className = "mui-btn mui-btn--primary";
+    cancelButton.className = "mui-btn mui-btn--primary  mui-btn--large";
     cancelButton.innerHTML = "cancel";
     cancelButton.name = "cancelButton";
+    cancelButton.style.marginLeft = "215px";
     cancelButton.onclick = function () {
         mui.overlay('off');
     };
 
+    let div = document.createElement("div");
+    div.style.position= "absolute";
+    div.style.bottom= "10px";
+    div.appendChild(okButton);
+    div.appendChild(cancelButton);
+
     modalEl.appendChild(par1);
     modalEl.appendChild(par2);
-    modalEl.appendChild(okButton);
-    modalEl.appendChild(cancelButton);
+    modalEl.appendChild(div);
 
     // show modal
     mui.overlay('on', modalEl);

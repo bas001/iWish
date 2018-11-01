@@ -13,13 +13,12 @@ router.post('/', function (req, res, next) {
 
         if(user) {
             res.render('signup', {
-                error: 'User already exists.'
+                error: 'User ' + username + ' ' +  'already exists. Please choose another username.'
             });
         } else {
             req.db.collection("users").insert({"name": username, "password": password}, function (err, user) {
                 req.session.user = username;
                 res.redirect('/dashboard');
-
             });
         }
 

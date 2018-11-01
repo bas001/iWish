@@ -11,14 +11,6 @@ html
       .mui-appbar {
         background-color: lightblue;
       }
-      .almost-button {
-        background-color: white;
-        display: inline-block;
-        margin: 6px;
-        padding: 0 26px;
-        font-size: 18px;
-        cursor: pointer;
-      }
       .mui-input {
         margin: 0 10px;
         display: inline-block;
@@ -27,13 +19,33 @@ html
         margin: 0 10px;
         display: inline-block;
       }
-  body
+      p, label, input, span, a {
+        font-size: 20px;
+        vertical-align: middle;
+      }
+      span + .mui-btn {
+        margin-left: 20px;
+      }
+      input + .mui-btn {
+        margin-left: 20px;
+      }
+      .header-appbar {
+        font-size: 30px;
+        padding: 0 10px;
+      }
+      .error {
+        color: palevioletred
+      }
+      .body-content {
+        margin: 40px
+      }
+body
   div(class='mui-appbar')
-      a(href='/dashboard') Dashboard
-      a(href='/login', class='mui--pull-right') Logout
-      h1(class='mui--text-center') iWish
+      a(href='/dashboard', class='header-appbar') Dashboard
+      a(href='/login', class='mui--pull-right header-appbar') Logout
+      div(class='mui--text-center mui--text-display3') iWish
       script(src="/javascripts/linkify.js")
       script(src="/javascripts/cookie.js")
       script(src="/javascripts/fetch.js")
-  div(class='mui-container-fluid')
+  div(class='body-content')
     block content

@@ -6,11 +6,10 @@ block content
     h2 My wishlist
     for item in wishes
         div
-            h3(class='inline') - #{item.description}
-            button(class='mui-btn', onclick="removeWish('#{wishlistId}', '#{item.uuid}')") remove
+            span(class='mui--text-display2') &#9679 #{item.description}
+            button(class='mui-btn mui-btn--large mui-btn--raised', onclick="removeWish('#{wishlistId}', '#{item.uuid}')") remove
 
-    form(class='mui-form', action="/wishlist/#{wishlistId}/item", method='post')
-        div
-            input(class='mui-input', id='description', value='', placeholder='What me wanth?', name='description')
-            input(class='mui-btn', type='submit', value='add', data-transition='fade', data-theme='c')
-    button(class='mui-btn', onclick="showPubshlishModal('#{wishlistId}')") publish
+    form( action="/wishlist/#{wishlistId}/item", method='post')
+            input(id='description', value='', placeholder='What me want?', name='description')
+            input(class='mui-btn mui-btn--large mui-btn--raised', type='submit', value='add', data-transition='fade', data-theme='c')
+    button(class='mui-btn mui-btn--large mui-btn--raised', onclick="showPubshlishModal('#{wishlistId}')") publish
