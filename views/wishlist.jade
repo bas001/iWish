@@ -6,11 +6,17 @@ block content
 
     h2 Wishlist of #{wishlist.user}
     if wishlist.items.length === 0
-        h2 This one is empty :)
+        h2 This one is still empty :)
     else
         for item in wishlist.items
             div
-                span(class='mui--text-display2') &#9679 #{item.description}
+                label
+                    if item.checked
+                        input(type="checkbox" id="check-#{item.uuid}", onchange="checkWish('#{item.uuid}', false)", checked="checked")
+                    else
+                        input(type="checkbox" id="check-#{item.uuid}", onchange="checkWish('#{item.uuid}', true)")
+                    span(class='mui--text-display2' for="check-#{item.uuid}")
+                span(class='mui--text-display2') #{item.description}
                 button(class='mui-btn mui-btn--large mui-btn--raised', onclick="unfold('#{item.uuid}')") comments
                 div(class='toggle', data-visible='false', id="#{item.uuid}")
                     for comment in item.comments

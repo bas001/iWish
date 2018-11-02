@@ -19,8 +19,12 @@ function patchData (url = ``, data = {}) {
         mode: "cors",
         cache: "no-cache",
         credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },
         redirect: "follow",
-        referrer: "no-referrer"
+        referrer: "no-referrer",
+        body: JSON.stringify(data)
     })
         .then(response => window.location.reload()) // parses response to JSON
         .catch(error => console.error(`Fetch Error =\n`, error));

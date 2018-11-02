@@ -54,7 +54,7 @@ router.patch('/:id', function (req, res, next) {
 
     req.db.collection("wishlist").update(
         {"_id": ObjectId(req.params.id)},
-        {$set: {"published": true}},
+        {$set: {"published": req.body.published}},
         function (err, res) {
             if (err) throw err;
             if (res.result) console.log("wishlist publlshed " + req.params.id);

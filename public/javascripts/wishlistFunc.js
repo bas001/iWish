@@ -35,6 +35,12 @@ function commentKeyupEvent(uuid) {
     }
 }
 
+function checkWish(wishId, checked) {
+    patchData('/wishlist/x/item', {uuid: wishId, checked: checked})
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+}
+
 function showPubshlishModal(wishlistId) {
     // initialize modal element
     let modalEl = document.createElement('div');
@@ -98,7 +104,7 @@ function removeWish(wishlistId, uuid) {
 
 function postComment(uuid) {
     let comment = document.getElementById(uuid).getElementsByTagName("input")[0].value;
-    postData('/wishlist/1/item/comment', {uuid: uuid, comment: comment})
+    postData('/wishlist/x/item/comment', {uuid: uuid, comment: comment})
         .then(data => console.log(data)) // JSON from `response.json()` call
         .catch(error => console.error(error));
 }
