@@ -46,11 +46,11 @@ router.post('/:id/item/comment', function (req, res, next) {
     req.db.collection("wishlist").update(
         {'items.uuid': req.body.uuid},
         {$push: {'items.$.comments': {'content': req.body.comment, 'user': req.session.user}}},
-        function (err, res) {
+        function (err, wishlist) {
             if (err) throw err;
             console.log("1 comment added to wish");
+            res.end();
         });
-    res.end();
 });
 
 module.exports = router;

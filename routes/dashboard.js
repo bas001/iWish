@@ -13,7 +13,9 @@ router.get('/', function (req, res, next) {
                     if (wishlist.user === req.session.user) {
                         mine = wishlist
                     } else {
-                        others.push(wishlist);
+                        if(wishlist.published === true) {
+                            others.push(wishlist);
+                        }
                     }
                 })
             }

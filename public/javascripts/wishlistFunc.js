@@ -71,7 +71,7 @@ function showPubshlishModal(wishlistId) {
     cancelButton.className = "mui-btn mui-btn--primary  mui-btn--large";
     cancelButton.innerHTML = "cancel";
     cancelButton.name = "cancelButton";
-    cancelButton.style.marginLeft = "215px";
+    cancelButton.style.marginLeft = "175px";
     cancelButton.onclick = function () {
         mui.overlay('off');
     };
