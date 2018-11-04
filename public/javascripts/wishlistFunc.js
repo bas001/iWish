@@ -11,21 +11,28 @@ function toggle(uuid) {
     if (uuid === "undefined") {
         return;
     }
-    let item = document.getElementById(uuid);
-    if (!item) {
+    let toShow = document.getElementById(uuid);
+    if (!toShow) {
         return;
     }
-    let visible = item.getAttribute('data-visible');
     let toggles = document.getElementsByClassName('toggle');
     [].forEach.call(toggles, function (el) {
         el.setAttribute('data-visible', "false")
     });
+
+    let visible = toShow.getAttribute('data-visible');
     if (visible === "false") {
         document.getElementById(uuid).setAttribute('data-visible', "true");
         setCookie("open-item", uuid)
     } else {
         setCookie("open-item", "undefined")
     }
+
+    let toggleBtns = document.getElementsByClassName('toggle-btn');
+    [].forEach.call(toggleBtns, function (el) {
+        el.setAttribute('data-visible', "true")
+    });
+    document.getElementById("btn-" + uuid).setAttribute('data-visible', "false");
 
 }
 
@@ -59,7 +66,7 @@ function showPubshlishModal(wishlistId) {
     par2.style.fontSize = "30px";
     par2.innerHTML = "Once published a wishlist cannot be edited anymore.";
     let okButton = document.createElement("button");
-    okButton.className = "mui-btn mui-btn--primary mui-btn--large";
+    okButton.className = "waves-effect waves-light btn-large";
     okButton.innerHTML = "ok";
     okButton.name = "okButton";
     okButton.onclick = function () {
@@ -68,7 +75,7 @@ function showPubshlishModal(wishlistId) {
     };
 
     let cancelButton = document.createElement("button");
-    cancelButton.className = "mui-btn mui-btn--primary  mui-btn--large";
+    cancelButton.className = "waves-effect waves-light btn-large";
     cancelButton.innerHTML = "cancel";
     cancelButton.name = "cancelButton";
     cancelButton.style.marginLeft = "175px";

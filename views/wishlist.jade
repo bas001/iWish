@@ -4,7 +4,7 @@ block content
     link(href='/stylesheets/toggle.css', rel='stylesheet')
     script(src="/javascripts/wishlistFunc.js")
 
-    h2 Wishlist of #{wishlist.user}
+    h2(class="wish-header") Wishlist of #{wishlist.user}
     if wishlist.items.length === 0
         h2 This one is still empty :)
     else
@@ -17,9 +17,12 @@ block content
                         input(type="checkbox" id="check-#{item.uuid}", onchange="checkWish('#{item.uuid}', true)")
                     span(class='mui--text-display2' for="check-#{item.uuid}")
                 span(class='mui--text-display2') #{item.description}
-                button(class='waves-effect waves-light btn-large', onclick="toggle('#{item.uuid}')") comments
+                p
+                div(class="toggle-btn", data-visible='true', id="btn-#{item.uuid}")
+                    button(class='waves-effect waves-light btn-large', onclick="toggle('#{item.uuid}')") comment
                 div(class='toggle', data-visible='false', id="#{item.uuid}")
                     for comment in item.comments
-                        p #{comment.user}: #{comment.content}
+                        div(class='mui--text-display1') #{comment.user}: #{comment.content}
                     input(class='mui-input', onkeyup="commentKeyupEvent('#{item.uuid}')" value='', placeholder="#{wishlist.user} won't see this", name='comment')
                     button(class='waves-effect waves-light btn-large', onclick="postComment('#{item.uuid}')") enter
+            p(class="space-p")

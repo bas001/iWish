@@ -5,10 +5,8 @@ block content
         p(class='error') #{error}
     form(class='mui-form', action='/login', method='post')
         fieldset(data-role='controlgroup')
-            label username
-            input(class='mui-input', id='username', value='', placeholder='your username', name='username')
-            label password
-            input(class='mui-input', id='password', value='', placeholder='your password', name='password')
+            input(class='mui-input', id='username', value='', placeholder='username', name='username')
+            input(class='mui-input', id='password', value='', placeholder='password', name='password')
         input(class='waves-effect waves-light btn-large', type='submit', value='Log In', data-transition='fade', data-theme='c')
     div
         p

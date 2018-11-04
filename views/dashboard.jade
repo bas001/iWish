@@ -2,13 +2,14 @@ extends layout
 
 block content
     div(class='mui--text-display3') Wishlists:
-    p
+    p(class='space-p')
     a(href='wishlist/#{myWishlist._id}', class='mui--text-display2') mine
     p
     p(class='wishlist-p')
         for wishlist in otherWishlists
             div
                 a(href='wishlist/#{wishlist._id}', class='mui--text-display2 wishlist') #{wishlist.user}
+            p(class='space-p')
     p(class='wishlist-p')
 
 

@@ -3,13 +3,15 @@ extends layout
 block content
     script(src="/javascripts/wishlistFunc.js")
 
-    h2 My wishlist
+    h2(class="wish-header") My wishlist
     for item in wishes
         div
             span(class='mui--text-display2') &#9679 #{item.description}
             button(class='waves-effect waves-light btn-large', onclick="removeWish('#{wishlistId}', '#{item.uuid}')") remove
+        p(class='space-p')
 
-    form( action="/wishlist/#{wishlistId}/item", method='post')
-            input(id='description', value='', placeholder='What me want?', name='description')
+    form(action="/wishlist/#{wishlistId}/item", method='post')
+            input(id='description', value='', placeholder='What me want?', name='description', required)
             input(class='waves-effect waves-light btn-large', type='submit', value='add', data-transition='fade', data-theme='c')
+    p(class='space-p')
     button(class='waves-effect waves-light btn-large', onclick="showPubshlishModal('#{wishlistId}')") publish
