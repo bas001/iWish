@@ -18,8 +18,16 @@ router.post('/', function (req, res, next) {
         } else {
             req.db.collection("users").insert({"name": username, "password": password}, function (err, user) {
                 req.session.user = username;
-                res.redirect('/dashboard');
             });
+            req.db.collection("wishlist").insert(
+                {"items": [], "user": username},
+                function (err, wishlist) {
+                    if (err) throw err;
+                    console.log("1 wishlist added" + wishlist.insertedIds[0]);
+                    res.redirect('/dashboard');
+
+                });
+
         }
 
     });

@@ -17,9 +17,9 @@ block content
                         input(type="checkbox" id="check-#{item.uuid}", onchange="checkWish('#{item.uuid}', true)")
                     span(class='mui--text-display2' for="check-#{item.uuid}")
                 span(class='mui--text-display2') #{item.description}
-                button(class='mui-btn mui-btn--large mui-btn--raised', onclick="toggle('#{item.uuid}')") comments
+                button(class='waves-effect waves-light btn-large', onclick="toggle('#{item.uuid}')") comments
                 div(class='toggle', data-visible='false', id="#{item.uuid}")
                     for comment in item.comments
                         p #{comment.user}: #{comment.content}
                     input(class='mui-input', onkeyup="commentKeyupEvent('#{item.uuid}')" value='', placeholder="#{wishlist.user} won't see this", name='comment')
-                    button(class='mui-btn mui-btn--large mui-btn--raised', onclick="postComment('#{item.uuid}')") enter
+                    button(class='waves-effect waves-light btn-large', onclick="postComment('#{item.uuid}')") enter
