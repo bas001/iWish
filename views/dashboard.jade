@@ -1,19 +1,19 @@
 extends layout
 
 block content
-    h1 Hello #{user}
-        if myWishlist
-            div
-                a(href='wishlist/#{myWishlist._id}', class='mui-btn mui-btn--large mui-btn--raised') open my wishlist
-        else
-            div
-                form(class='mui-form', action="/wishlist", method='post')
-                    input(type='hidden', id='user', name='user', value='#{user}')
-                    input(class='mui-btn mui-btn--large mui-btn--raised', type='submit', value='+ create wishlist')
+    div(class='mui--text-display3') Wishlists
+    if myWishlist
+        div
+            a(href='wishlist/#{myWishlist._id}', class='mui--text-display2') my wishlist
+    else
+        div
+            form(class='mui-form', action="/wishlist", method='post')
+                input(type='hidden', id='user', name='user', value='#{user}')
+                input(class='mui-btn mui-btn--large mui-btn--raised', type='submit', value='+ create wishlist')
     h2 others
         for wishlist in otherWishlists
             div
-                a(href='wishlist/#{wishlist._id}', class='mui-btn mui-btn--large mui-btn--raised') open wishlist of #{wishlist.user}
+                a(href='wishlist/#{wishlist._id}', class='mui--text-display2') wishlist of #{wishlist.user}
 
 
 

@@ -1,13 +1,13 @@
 // wishlist
 window.onload = function () {
     let openItem = getCookie("open-item");
-    unfold(openItem);
+    toggle(openItem);
 
     let html = document.documentElement.innerHTML;
     document.write(linkify(html));
 };
 
-function unfold(uuid) {
+function toggle(uuid) {
     if (uuid === "undefined") {
         return;
     }
