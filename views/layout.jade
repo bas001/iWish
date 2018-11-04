@@ -48,6 +48,8 @@ body
   div(class='mui-appbar')
       a(href='/dashboard', class='header-appbar') Dashboard
       a(href='/login', class='mui--pull-right header-appbar') Logout
+      if user
+        span(class='mui--pull-right header-appbar') Hello #{user}!
       div(class='mui--text-center mui--text-display3') iWish
       script(src="/javascripts/linkify.js")
       script(src="/javascripts/cookie.js")

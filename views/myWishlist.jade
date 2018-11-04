@@ -7,9 +7,9 @@ block content
     for item in wishes
         div
             span(class='mui--text-display2') &#9679 #{item.description}
-            button(class='mui-btn mui-btn--large mui-btn--raised', onclick="removeWish('#{wishlistId}', '#{item.uuid}')") remove
+            button(class='waves-effect waves-light btn-large', onclick="removeWish('#{wishlistId}', '#{item.uuid}')") remove
 
     form( action="/wishlist/#{wishlistId}/item", method='post')
             input(id='description', value='', placeholder='What me want?', name='description')
-            input(class='mui-btn mui-btn--large mui-btn--raised', type='submit', value='add', data-transition='fade', data-theme='c')
-    button(class='mui-btn mui-btn--large mui-btn--raised', onclick="showPubshlishModal('#{wishlistId}')") publish
+            input(class='waves-effect waves-light btn-large', type='submit', value='add', data-transition='fade', data-theme='c')
+    button(class='waves-effect waves-light btn-large', onclick="showPubshlishModal('#{wishlistId}')") publish

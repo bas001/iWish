@@ -24,6 +24,7 @@ router.get('/:id', function (req, res, next) {
             }
             else {
                 res.render('emptyWishlist', {
+                    user: req.session.user,
                     wishlistId: req.params.id
                 });
             }
