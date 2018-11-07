@@ -4,14 +4,15 @@ block content
     div(class='mui--text-display3 wish-header') Wishlists:
     p(class='space-p')
     a(href='wishlist/#{myWishlist._id}', class='mui--text-display2') mine
-    p
+    p(class='space-p')
     p(class='wishlist-p')
+    p(class='space-p')
         for wishlist in otherWishlists
             div
                 a(href='wishlist/#{wishlist._id}', class='mui--text-display2 wishlist') #{wishlist.user}
             p(class='space-p')
-    if otherWishlists.size === 0
-        p(class='mui--text-display2') There are no published wishlists yet.
+    if otherWishlists.length === 0
+        p(class='mui--text-display1') There are no published wishlists yet.
 
 
 
