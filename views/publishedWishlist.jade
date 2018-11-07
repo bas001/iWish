@@ -4,7 +4,9 @@ block content
     script(src="/javascripts/wishlistFunc.js")
 
     h2(class="wish-header") My wishlist
-    h3 This wishlist is already published. You cannot edit it anymore. Enjoy your surprise :)
+    h3 This wishlist is already published. You cannot edit it anymore.
+    h3 Enjoy your surprise :)
+    p(class='space-p')
     for item in wishes
         div
             div(class='mui--text-display2') &#9679 #{item.description}
